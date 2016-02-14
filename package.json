@@ -1,0 +1,24 @@
+{
+  "name": "webreed",
+  "version": "0.0.1",
+  "description": "A simple yet flexible static website generator.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "babel src --out-dir lib",
+    "devmode": "babel --watch src --out-dir lib",
+    "test": "mocha ./test/ --recursive --compilers js:babel-register"
+  },
+  "author": "Rotorz Limited",
+  "license": "MIT",
+  "dependencies": {
+    "webreed-core": "^0.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "mocha": "^2.3.4",
+    "mocha-testdata": "^1.1.2",
+    "should": "^8.0.2"
+  }
+}
