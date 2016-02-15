@@ -15,11 +15,11 @@ describe("#setup(options)", function () {
   it("is a function", function () {
     webreed
       .should.be.a.Function();
-  })
+  });
 
   it("is named 'setup'", function () {
     webreed.name
       .should.be.eql("setup");
-  })
+  });
 
-})
+});
