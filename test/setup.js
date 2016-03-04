@@ -15,7 +15,7 @@ import BinaryMode from "webreed-binary-mode/lib/BinaryMode";
 import TextMode from "webreed-text-mode/lib/TextMode";
 
 // Project
-import setup from "../src";
+import setup from "../src/setup";
 
 
 describe("#setup(options)", function () {
