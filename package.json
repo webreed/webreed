@@ -11,7 +11,9 @@
   "author": "Rotorz Limited",
   "license": "MIT",
   "dependencies": {
-    "webreed-core": "^0.0.1"
+    "webreed-binary-mode": "^0.0.1",
+    "webreed-core": "^0.0.1",
+    "webreed-text-mode": "^0.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
