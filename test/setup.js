@@ -9,9 +9,11 @@ import {Environment} from "webreed-core/lib/Environment";
 import {ResourceType} from "webreed-core/lib/ResourceType";
 
 import {BinaryMode} from "webreed-binary-mode/lib/BinaryMode";
+import {JsonHandler} from "webreed-json-handler/lib/JsonHandler";
 import {StandardGenerator} from "webreed-standard-generator/lib/StandardGenerator";
 import {TemplateTransformer} from "webreed-template-transformer/lib/TemplateTransformer";
 import {TextMode} from "webreed-text-mode/lib/TextMode";
+import {YamlHandler} from "webreed-yaml-handler/lib/YamlHandler";
 
 import setup from "../lib/setup";
 
@@ -71,6 +73,18 @@ describe("#setup(options)", function () {
     let env = setup();
     env.transformers.get("template")
       .should.be.instanceOf(TemplateTransformer);
+  });
+
+  it("includes the 'json' handler by default", function () {
+    let env = setup();
+    env.handlers.get("json")
+      .should.be.instanceOf(JsonHandler);
+  });
+
+  it("includes the 'yaml' handler by default", function () {
+    let env = setup();
+    env.handlers.get("yaml")
+      .should.be.instanceOf(YamlHandler);
   });
 
 });

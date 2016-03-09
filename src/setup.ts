@@ -6,9 +6,11 @@ import {Environment} from "webreed-core/lib/Environment";
 import {ResourceType} from "webreed-core/lib/ResourceType";
 
 import setupBinaryMode from "webreed-binary-mode";
+import setupJsonHandler from "webreed-json-handler";
 import setupStandardGenerator from "webreed-standard-generator";
 import setupTemplateTransformer from "webreed-template-transformer";
 import setupTextMode from "webreed-text-mode";
+import setupYamlHandler from "webreed-yaml-handler";
 
 
 export default function setup(): Environment {
@@ -32,4 +34,6 @@ function setupDefaultPlugins(env: Environment): void {
   setupTextMode(env, { });
   setupStandardGenerator(env, { });
   setupTemplateTransformer(env, { });
+  setupJsonHandler(env, { });
+  setupYamlHandler(env, { });
 }

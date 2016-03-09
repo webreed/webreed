@@ -13,9 +13,11 @@
   "license": "MIT",
   "dependencies": {
     "webreed-binary-mode": "^0.0.1",
+    "webreed-json-handler": "^0.0.1",
     "webreed-standard-generator": "^0.0.1",
     "webreed-template-transformer": "^0.0.1",
-    "webreed-text-mode": "^0.0.1"
+    "webreed-text-mode": "^0.0.1",
+    "webreed-yaml-handler": "^0.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
