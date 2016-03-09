@@ -9,6 +9,8 @@ import {Environment} from "webreed-core/lib/Environment";
 import {ResourceType} from "webreed-core/lib/ResourceType";
 
 import {BinaryMode} from "webreed-binary-mode/lib/BinaryMode";
+import {StandardGenerator} from "webreed-standard-generator/lib/StandardGenerator";
+import {TemplateTransformer} from "webreed-template-transformer/lib/TemplateTransformer";
 import {TextMode} from "webreed-text-mode/lib/TextMode";
 
 import setup from "../lib/setup";
@@ -57,6 +59,18 @@ describe("#setup(options)", function () {
     let env = setup();
     env.modes.get("text")
       .should.be.instanceOf(TextMode);
+  });
+
+  it("includes the 'standard' generator by default", function () {
+    let env = setup();
+    env.generators.get("standard")
+      .should.be.instanceOf(StandardGenerator);
+  });
+
+  it("includes the 'template' transformer by default", function () {
+    let env = setup();
+    env.transformers.get("template")
+      .should.be.instanceOf(TemplateTransformer);
   });
 
 });

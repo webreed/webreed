@@ -6,6 +6,8 @@ import {Environment} from "webreed-core/lib/Environment";
 import {ResourceType} from "webreed-core/lib/ResourceType";
 
 import setupBinaryMode from "webreed-binary-mode";
+import setupStandardGenerator from "webreed-standard-generator";
+import setupTemplateTransformer from "webreed-template-transformer";
 import setupTextMode from "webreed-text-mode";
 
 
@@ -28,4 +30,6 @@ function setupFallbackResourceType(env: Environment): void {
 function setupDefaultPlugins(env: Environment): void {
   setupBinaryMode(env, { });
   setupTextMode(env, { });
+  setupStandardGenerator(env, { });
+  setupTemplateTransformer(env, { });
 }

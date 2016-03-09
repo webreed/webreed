@@ -13,7 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "webreed-binary-mode": "^0.0.1",
-    "webreed-core": "^0.0.1",
+    "webreed-standard-generator": "^0.0.1",
+    "webreed-template-transformer": "^0.0.1",
     "webreed-text-mode": "^0.0.1"
   },
   "devDependencies": {
