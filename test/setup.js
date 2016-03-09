@@ -2,19 +2,15 @@
 // Licensed under the MIT license. See LICENSE file in the project root.
 
 
-// Packages
 import given from "mocha-testdata";
 import should from "should";
 
-// Webreed Core
 import {Environment} from "webreed-core/lib/Environment";
 import {ResourceType} from "webreed-core/lib/ResourceType";
 
-// Webreed Plugins
 import {BinaryMode} from "webreed-binary-mode/lib/BinaryMode";
 import {TextMode} from "webreed-text-mode/lib/TextMode";
 
-// Project
 import setup from "../lib/setup";
 
 
