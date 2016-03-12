@@ -31,11 +31,12 @@ function setupFallbackResourceType(env: Environment): void {
 }
 
 function setupDefaultPlugins(env: Environment): void {
-  setupBinaryMode(env, { });
-  setupTextMode(env, { });
-  setupStandardGenerator(env, { });
-  setupTemplateTransformer(env, { });
-  setupJsonHandler(env, { });
-  setupYamlHandler(env, { });
-  setupNunjucksTemplateEngine(env, { });
+  env
+    .use(setupBinaryMode)
+    .use(setupTextMode)
+    .use(setupStandardGenerator)
+    .use(setupTemplateTransformer)
+    .use(setupJsonHandler)
+    .use(setupYamlHandler)
+    .use(setupNunjucksTemplateEngine);
 }
