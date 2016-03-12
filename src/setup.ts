@@ -7,6 +7,7 @@ import {ResourceType} from "webreed-core/lib/ResourceType";
 
 import setupBinaryMode from "webreed-binary-mode";
 import setupJsonHandler from "webreed-json-handler";
+import setupNunjucksTemplateEngine from "webreed-nunjucks-template-engine";
 import setupStandardGenerator from "webreed-standard-generator";
 import setupTemplateTransformer from "webreed-template-transformer";
 import setupTextMode from "webreed-text-mode";
@@ -36,4 +37,5 @@ function setupDefaultPlugins(env: Environment): void {
   setupTemplateTransformer(env, { });
   setupJsonHandler(env, { });
   setupYamlHandler(env, { });
+  setupNunjucksTemplateEngine(env, { });
 }

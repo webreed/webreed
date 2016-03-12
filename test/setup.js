@@ -10,6 +10,7 @@ import {ResourceType} from "webreed-core/lib/ResourceType";
 
 import {BinaryMode} from "webreed-binary-mode/lib/BinaryMode";
 import {JsonHandler} from "webreed-json-handler/lib/JsonHandler";
+import {NunjucksTemplateEngine} from "webreed-nunjucks-template-engine/lib/NunjucksTemplateEngine";
 import {StandardGenerator} from "webreed-standard-generator/lib/StandardGenerator";
 import {TemplateTransformer} from "webreed-template-transformer/lib/TemplateTransformer";
 import {TextMode} from "webreed-text-mode/lib/TextMode";
@@ -85,6 +86,12 @@ describe("#setup(options)", function () {
     let env = setup();
     env.handlers.get("yaml")
       .should.be.instanceOf(YamlHandler);
+  });
+
+  it("includes the 'nunjucks' template engine by default", function () {
+    let env = setup();
+    env.templateEngines.get("nunjucks")
+      .should.be.instanceOf(NunjucksTemplateEngine);
   });
 
 });
