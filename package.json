@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A simple yet flexible static website generator.",
   "main": "lib/setup.js",
+  "typings": "lib/setup.d.ts",
   "scripts": {
     "prepublish": "npm run build",
     "build": "npm run clean && gulp build",
