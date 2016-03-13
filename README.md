@@ -1,4 +1,4 @@
-# webreed
+# webreed [![Build Status](https://travis-ci.org/webreed/webreed.svg?branch=master)](https://travis-ci.org/webreed/webreed)
 
 Webreed aims to be a simple yet flexible static website generator.
 
