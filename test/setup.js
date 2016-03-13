@@ -2,6 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root.
 
 
+import path from "path";
+
 import given from "mocha-testdata";
 import should from "should";
 
@@ -19,7 +21,13 @@ import {YamlHandler} from "webreed-yaml-handler/lib/YamlHandler";
 import setup from "../lib/setup";
 
 
-describe("#setup(options)", function () {
+describe("#setup(projectRootPath, [options])", function () {
+
+  beforeEach(function () {
+    let projectRootPath = path.join(__dirname, "fixtures/example-project");
+    this.env = setup(projectRootPath);
+  });
+
 
   it("is a function", function () {
     setup
@@ -33,64 +41,54 @@ describe("#setup(options)", function () {
 
 
   it("returns a webreed environment", function () {
-    let env = setup();
-    env
+    this.env
       .should.be.instanceOf(Environment);
   });
 
 
   it("includes the fallback resource type '*'", function () {
-    let env = setup();
-    env.resourceTypes.get("*")
+    this.env.resourceTypes.get("*")
       .should.be.instanceOf(ResourceType);
   });
 
   it("fallback resource type '*' assumes 'binary' mode", function () {
-    let env = setup();
-    env.resourceTypes.get("*").mode
+    this.env.resourceTypes.get("*").mode
       .should.be.eql("binary");
   });
 
 
   it("includes the 'binary' mode by default", function () {
-    let env = setup();
-    env.modes.get("binary")
+    this.env.modes.get("binary")
       .should.be.instanceOf(BinaryMode);
   });
 
   it("includes the 'text' mode by default", function () {
-    let env = setup();
-    env.modes.get("text")
+    this.env.modes.get("text")
       .should.be.instanceOf(TextMode);
   });
 
   it("includes the 'standard' generator by default", function () {
-    let env = setup();
-    env.generators.get("standard")
+    this.env.generators.get("standard")
       .should.be.instanceOf(StandardGenerator);
   });
 
   it("includes the 'template' transformer by default", function () {
-    let env = setup();
-    env.transformers.get("template")
+    this.env.transformers.get("template")
       .should.be.instanceOf(TemplateTransformer);
   });
 
   it("includes the 'json' handler by default", function () {
-    let env = setup();
-    env.handlers.get("json")
+    this.env.handlers.get("json")
       .should.be.instanceOf(JsonHandler);
   });
 
   it("includes the 'yaml' handler by default", function () {
-    let env = setup();
-    env.handlers.get("yaml")
+    this.env.handlers.get("yaml")
       .should.be.instanceOf(YamlHandler);
   });
 
   it("includes the 'nunjucks' template engine by default", function () {
-    let env = setup();
-    env.templateEngines.get("nunjucks")
+    this.env.templateEngines.get("nunjucks")
       .should.be.instanceOf(NunjucksTemplateEngine);
   });
 

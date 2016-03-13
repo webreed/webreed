@@ -26,7 +26,10 @@ $ npm install --g webreed-cli
 ```javascript
 const webreed = require("webreed");
 
-let env = webreed(options);
+let projectRootPath = "/webreed-projects/example.com";
+let options = { };
+
+let env = webreed(projectRootPath, options);
 env.build()
   .then(() => {
     console.log("Completed!");
@@ -38,7 +41,10 @@ env.build()
 ```typescript
 import webreed = require("webreed");
 
-let env = webreed(options);
+let projectRootPath = "/webreed-projects/example.com";
+let options = { };
+
+let env = webreed(projectRootPath, options);
 env.build()
   .then(() => {
     console.log("Completed!");

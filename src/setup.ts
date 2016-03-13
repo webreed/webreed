@@ -14,7 +14,7 @@ import setupTextMode from "webreed-text-mode";
 import setupYamlHandler from "webreed-yaml-handler";
 
 
-export default function setup(): Environment {
+export default function setup(projectRootPath: string, options: any = null): Environment {
   let env = new Environment();
 
   setupFallbackResourceType(env);
