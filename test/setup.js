@@ -24,8 +24,8 @@ import setup from "../lib/setup";
 describe("#setup(projectRootPath, [options])", function () {
 
   beforeEach(function () {
-    let projectRootPath = path.join(__dirname, "fixtures/example-project");
-    this.env = setup(projectRootPath);
+    this.projectRootPath = path.join(__dirname, "fixtures/example-project");
+    this.env = setup(this.projectRootPath);
   });
 
 
@@ -40,9 +40,33 @@ describe("#setup(projectRootPath, [options])", function () {
   });
 
 
+  given( undefined, null, 42 ).
+  it("throws error when argument 'projectRootPath' is not a string", function (projectRootPath) {
+    (() => setup(projectRootPath))
+      .should.throw("argument 'projectRootPath' must be a string");
+  });
+
+  given( "", "   ", "\t  " ).
+  it("throws error when argument 'projectRootPath' is an empty string", function (projectRootPath) {
+    (() => setup(projectRootPath))
+      .should.throw("argument 'projectRootPath' must be a non-empty string");
+  });
+
+  given( 42, "" ).
+  it("throws error when argument 'options' is not a string", function (options) {
+    (() => setup(this.projectRootPath, options))
+      .should.throw("argument 'options' must be `null` or an object");
+  });
+
+
   it("returns a webreed environment", function () {
     this.env
       .should.be.instanceOf(Environment);
+  });
+
+  it("sets root path of project in environment", function () {
+    this.env.projectRootPath
+      .should.be.eql(this.projectRootPath);
   });
 
 
