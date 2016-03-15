@@ -1,6 +1,10 @@
-# webreed [![Build Status](https://travis-ci.org/webreed/webreed.svg?branch=master)](https://travis-ci.org/webreed/webreed)
+# webreed
 
 Webreed aims to be a simple yet flexible static website generator.
+
+[![Build Status](https://travis-ci.org/webreed/webreed.svg?branch=master)](https://travis-ci.org/webreed/webreed)
+[![Dependency Status](https://david-dm.org/webreed/webreed.svg)](https://david-dm.org/webreed/webreed)
+[![devDependency Status](https://david-dm.org/webreed/webreed/dev-status.svg)](https://david-dm.org/webreed/webreed#info=devDependencies)
 
 
 ## Installation
