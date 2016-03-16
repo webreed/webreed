@@ -14,15 +14,15 @@ import setupTextMode from "webreed-text-mode";
 import setupYamlHandler from "webreed-yaml-handler";
 
 
-export default function setup(projectRootPath: string, options: any = null): Environment {
+export default function setup(projectRootPath: string, config: any = null): Environment {
   if (typeof projectRootPath !== "string") {
     throw new TypeError("argument 'projectRootPath' must be a string");
   }
   if (projectRootPath.trim() === "") {
     throw new Error("argument 'projectRootPath' must be a non-empty string");
   }
-  if (typeof options !== "object") {
-    throw new TypeError("argument 'options' must be `null` or an object");
+  if (typeof config !== "object") {
+    throw new TypeError("argument 'config' must be `null` or an object");
   }
 
   let env = new Environment();
