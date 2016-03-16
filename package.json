@@ -19,14 +19,14 @@
   "license": "MIT",
   "dependencies": {
     "is-my-json-valid": "^2.13.1",
-    "webreed-binary-mode": "^0.0.2",
-    "webreed-core": "^0.0.5",
-    "webreed-json-handler": "^0.0.2",
-    "webreed-nunjucks-template-engine": "^0.0.2",
-    "webreed-standard-generator": "^0.0.2",
-    "webreed-template-transformer": "^0.0.2",
-    "webreed-text-mode": "^0.0.2",
-    "webreed-yaml-handler": "^0.0.2"
+    "webreed-binary-mode": "^0.0.x",
+    "webreed-core": "^0.0.x",
+    "webreed-json-handler": "^0.0.x",
+    "webreed-nunjucks-template-engine": "^0.0.x",
+    "webreed-standard-generator": "^0.0.x",
+    "webreed-template-transformer": "^0.0.x",
+    "webreed-text-mode": "^0.0.x",
+    "webreed-yaml-handler": "^0.0.x"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
