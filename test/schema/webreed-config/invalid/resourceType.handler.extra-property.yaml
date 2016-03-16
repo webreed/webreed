@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    handler:
+      key: custom-handler
+      invalidProperty: true

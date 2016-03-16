@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    process:
+      options:
+        customProperty: 42

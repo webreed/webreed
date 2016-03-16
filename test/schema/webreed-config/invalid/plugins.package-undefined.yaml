@@ -1,0 +1,3 @@
+plugins:
+  - options:
+      customOption1: 42

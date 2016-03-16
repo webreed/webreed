@@ -1,0 +1,12 @@
+baseUrl: http://example.com/simple
+defaultGeneratorName: standard
+defaultModeName: text
+hiddenUrlExtensions:
+  - .html
+  - .htm
+hiddenUrlFileNames:
+  - index.html
+  - index.htm
+paths:
+  output: output2
+  plugins: plugins2

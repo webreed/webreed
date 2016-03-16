@@ -1,0 +1,14 @@
+resourceTypes:
+  ".foo": 
+    conversions:
+      ".html":
+        transformer: foo-to-html
+      ".md":
+        transformer: foo-to-markdown
+        options:
+          customOption: 42
+      ".bar":
+        - transformer: foo-to-bar
+        - transformer: do-something-else
+          options:
+            customOption: 42

@@ -1,0 +1,8 @@
+plugins:
+  - package: webreed-plugin1
+  - package: webreed-plugin2
+    options: ~
+  - package: webreed-plugin3
+    options:
+      customOption1: 42
+      customOption2: true

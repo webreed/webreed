@@ -1,0 +1,3 @@
+resourceTypes:
+  ".chained.extensions":
+    encoding: utf8

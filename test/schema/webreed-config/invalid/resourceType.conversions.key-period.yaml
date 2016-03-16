@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    conversions:
+      ".":
+        transformer: foo-to-html

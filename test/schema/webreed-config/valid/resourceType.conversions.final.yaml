@@ -1,0 +1,8 @@
+resourceTypes:
+  ".foo": 
+    conversions:
+      "$":
+        - transformer: foo-to-bar
+        - transformer: do-something-else
+          options:
+            customOption: 42

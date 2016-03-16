@@ -1,0 +1,220 @@
+{
+  "type": "object",
+  "title": "Webreed Project Configuration",
+
+  "properties": {
+    "baseUrl": {
+      "description": "Base URL of website where output content will be accessible from.",
+      "type": "string",
+      "default": "/"
+    },
+
+    "defaultGeneratorName": {
+      "description": "Name of the generator that should be used to generate output content when not specified by the associated resource type.",
+      "type": "string",
+      "default": "standard"
+    },
+
+    "defaultModeName": {
+      "description": "Name of the mode that should be used to read and write resource files when not specified by the associated resource type.",
+      "type": "string",
+      "default": "text"
+    },
+
+    "hiddenUrlExtensions": {
+      "description": "File extensions that should be hidden from URLs.",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+
+    "hiddenUrlFileNames": {
+      "description": "File names that should be hidden from generated URLs.",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+
+    "paths": {
+      "description": "Customize output paths. Paths are resolved relative from the project's root path.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9\\-\\.,_]+$"
+      }
+    },
+
+    "resourceTypes": {
+      "description": "Map defining the resource types that are used in the project.",
+      "type": "object",
+      "patternProperties": {
+        "^(|\\*|\\$|\\.[A-Za-z0-9\\-,_]+)$": { "$ref": "#/definitions/resourceType" }
+      },
+      "additionalProperties": false
+    },
+
+    "plugins": {
+      "description": "List of webreed plugin packages.\n\nPlugins are used in the order given; although load order is not normally important.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "package": {
+            "description": "Name of the package that contains the plugin.",
+            "type": "string",
+            "minLength": 1
+          },
+          "options": {
+            "description": "Options that are provided to plugin package setup function.",
+            "anyOf": [
+              { "type": "object" },
+              { "type": "null" }
+            ]
+          }
+        },
+        "required": [ "package" ],
+        "additionalProperties": false
+      }
+    }
+  },
+
+  "additionalProperties": false,
+
+  "definitions": {
+    "pluginContext": {
+      "description": "References a plugin by its key and can optionally specify options that apply in this context.",
+      "type": "object",
+      "properties": {
+        "key": {
+          "description": "Identifies the plugin.",
+          "$ref": "#/definitions/pluginKey"
+        },
+        "options": {
+          "description": "Options that apply for this context of the plugin.",
+          "anyOf": [
+            { "type": "object" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "required": [ "key" ],
+      "additionalProperties": false
+    },
+
+    "pluginKey": {
+      "description": "Key that identifies a plugin.",
+      "type": "string",
+      "minLength": 1
+    },
+
+    "resourceType": {
+      "description": "Defines a type of resource.",
+      "type": "object",
+      "properties": {
+        "conversions": {
+          "description": "Map of conversion transformers from the resource type to zero-or-more target extensions.",
+          "type": "object",
+          "patternProperties": {
+            "^(|\\*|\\$|\\.[A-Za-z0-9\\-,_]+)$": {
+              "anyOf": [
+                { "$ref": "#/definitions/transformerPluginContext" },
+                { "$ref": "#/definitions/transformerPluginContextMany" }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "custom": {
+          "description": "A general purpose container of custom properties that can be used by plugins.",
+          "type": "object"
+        },
+        "encoding": {
+          "description": "Encoding of the resource; used by 'text' mode.",
+          "type": "string",
+          "default": "utf8"
+        },
+        "parseFrontmatter": {
+          "description": "Indicates whether frontmatter of source content should be parsed when reading resources of this type.",
+          "type": "boolean",
+          "default": true
+        },
+        "targetExtension": {
+          "description": "Target extension type that should be implied when processing resources of this type. For instance, it could be implied that markdown files are always saved as .html files.\n\nSpecify `null` or omit this property when no target extension should be implied.",
+          "anyOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ],
+          "pattern": "^(|\\*|\\$|\\.[A-Za-z0-9\\-,_]+)$",
+          "default": null
+        },
+        "mode": {
+          "description": "Identifies the mode that will be used to read and write resources of this type.",
+          "type": "string",
+          "default": "text"
+        },
+        "handler": {
+          "description": "Identifies the handler that is used to decode or encode data in the body of resources of this type. This is useful for data formats such as JSON and YAML.",
+          "anyOf": [
+            { "$ref": "#/definitions/pluginContext" },
+            { "$ref": "#/definitions/pluginKey" }
+          ]
+        },
+        "generator": {
+          "description": "Identifies the generator that is used to process resources of this type.",
+          "anyOf": [
+            { "$ref": "#/definitions/pluginContext" },
+            { "$ref": "#/definitions/pluginKey" }
+          ],
+          "default": "standard"
+        },
+        "process": {
+          "description": "Identifies zero-or-more transformers which are in-turn applied to resources of this type.",
+          "anyOf": [
+            { "$ref": "#/definitions/transformerPluginContext" },
+            { "$ref": "#/definitions/pluginKey" }
+          ]
+        },
+        "templateEngine": {
+          "description": "Identifies the template engine that is used to render resources of this type. This is applicable when using the 'template' process transformation.",
+          "anyOf": [
+            { "$ref": "#/definitions/pluginContext" },
+            { "$ref": "#/definitions/pluginKey" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "transformerPluginContext": {
+      "description": "References a transformer plugin by its key and can optionally specify options that apply in this context.",
+      "type": "object",
+      "properties": {
+        "transformer": {
+          "description": "Identifies the transformer plugin.",
+          "$ref": "#/definitions/pluginKey"
+        },
+        "options": {
+          "description": "Options that are provided to plugin package setup function.",
+          "anyOf": [
+            { "type": "object" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "required": [ "transformer" ],
+      "additionalProperties": false
+    },
+
+    "transformerPluginContextMany": {
+      "description": "References zero-or-more transformer plugins.",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "$ref": "#/definitions/transformerPluginContext" },
+          { "$ref": "#/definitions/pluginKey" }
+        ]
+      }
+    }
+  }
+}

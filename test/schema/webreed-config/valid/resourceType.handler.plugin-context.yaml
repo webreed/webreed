@@ -1,0 +1,9 @@
+resourceTypes:
+  ".foo":
+    handler:
+      key: custom-handler
+  ".bar":
+    handler:
+      key: custom-handler
+      options:
+        customOption: 42

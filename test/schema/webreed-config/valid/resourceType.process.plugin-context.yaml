@@ -1,0 +1,9 @@
+resourceTypes:
+  ".foo":
+    process:
+      transformer: custom-process-transformer
+  ".bar":
+    process:
+      transformer: custom-process-transformer
+      options:
+        customOption: 42

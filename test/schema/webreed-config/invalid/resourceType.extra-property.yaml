@@ -1,0 +1,3 @@
+resourceTypes:
+  ".foo":
+    invalidProperty: true

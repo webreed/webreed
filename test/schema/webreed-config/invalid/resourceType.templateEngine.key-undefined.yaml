@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    templateEngine:
+      options:
+        customProperty: 42

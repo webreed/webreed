@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    templateEngine:
+      key: custom-template-engine
+      invalidProperty: true

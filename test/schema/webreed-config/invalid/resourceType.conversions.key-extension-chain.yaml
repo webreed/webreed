@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    conversions:
+      ".chained.extensions":
+        transformer: foo-to-html

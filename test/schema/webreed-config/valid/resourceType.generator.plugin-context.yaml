@@ -1,0 +1,9 @@
+resourceTypes:
+  ".foo":
+    generator:
+      key: custom-generator
+  ".bar":
+    generator:
+      key: custom-generator
+      options:
+        customOption: 42

@@ -16,6 +16,9 @@ $ npm install --save-dev webreed
 
 ## Usage
 
+See [Webreed Project Configuration](./docs/webreed-project-config.md) to learn more about
+the available configuration options.
+
 ### CLI
 
 The command line interface is provided by the [webreed-cli](https://github.com/webreed/webreed-cli)
@@ -31,9 +34,9 @@ $ npm install --g webreed-cli
 const webreed = require("webreed");
 
 let projectRootPath = "/webreed-projects/example.com";
-let options = { };
+let projectConfig = { };
 
-let env = webreed(projectRootPath, options);
+let env = webreed(projectRootPath, projectConfig);
 env.build()
   .then(() => {
     console.log("Completed!");
@@ -46,9 +49,9 @@ env.build()
 import webreed = require("webreed");
 
 let projectRootPath = "/webreed-projects/example.com";
-let options = { };
+let projectConfig = { };
 
-let env = webreed(projectRootPath, options);
+let env = webreed(projectRootPath, projectConfig);
 env.build()
   .then(() => {
     console.log("Completed!");

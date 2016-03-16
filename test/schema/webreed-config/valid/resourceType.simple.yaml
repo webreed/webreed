@@ -1,0 +1,10 @@
+resourceTypes:
+  ".foo":
+    encoding: utf8
+    parseFrontmatter: true
+    targetExtension: .html
+    mode: text
+    handler: custom-handler
+    generator: custom-generator
+    process: custom-process-transformer
+    templateEngine: custom-template-engine

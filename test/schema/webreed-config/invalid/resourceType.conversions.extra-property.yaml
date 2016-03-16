@@ -1,0 +1,6 @@
+resourceTypes:
+  ".foo": 
+    conversions:
+      ".bar":
+        transformer: foo-to-bar
+        invalidProperty: true

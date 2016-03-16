@@ -1,0 +1,5 @@
+resourceTypes:
+  ".foo": 
+    generator:
+      options:
+        customProperty: 42

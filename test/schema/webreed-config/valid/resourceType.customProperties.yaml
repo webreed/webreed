@@ -1,0 +1,6 @@
+resourceTypes:
+  ".foo":
+    custom:
+      customProperty1: 42
+      customProperty2:
+        abc: "def"
