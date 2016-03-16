@@ -53,7 +53,7 @@ describe("#setup(projectRootPath, [options])", function () {
   });
 
   given( 42, "" ).
-  it("throws error when argument 'config' is not a string", function (config) {
+  it("throws error when argument 'config' is not an object", function (config) {
     (() => setup(this.projectRootPath, config))
       .should.throw("argument 'config' must be `null` or an object");
   });
