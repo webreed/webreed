@@ -3,17 +3,34 @@
 
 
 import {Environment} from "webreed-core/lib/Environment";
-import {ResourceType} from "webreed-core/lib/ResourceType";
 
-import setupBinaryMode from "webreed-binary-mode";
-import setupJsonHandler from "webreed-json-handler";
-import setupNunjucksTemplateEngine from "webreed-nunjucks-template-engine";
-import setupStandardGenerator from "webreed-standard-generator";
-import setupTemplateTransformer from "webreed-template-transformer";
-import setupTextMode from "webreed-text-mode";
-import setupYamlHandler from "webreed-yaml-handler";
+import {applyConfigToEnvironment} from "./applyConfigToEnvironment";
 
 
+/**
+ * Setup a webreed environment for a given webreed project path.
+ *
+ * @projectRootPath
+ *   Path to the root directory of a webreed project.
+ * @config
+ *   Webreed project configuration.
+ *
+ * @returns
+ *   An environment representing the webreed project.
+ *
+ * @throws {Error}
+ * - with the code `WEBREED_INVALID_CONFIG` when argument 'config' is not a valid webreed
+ *   project configuration. Error object is augmented with:
+ *     * `err.issues` - Lists the validation error(s).
+ *
+ * - with the code `WEBREED_PLUGIN_NOT_FOUND` when a plugin package cannot be located.
+ *   Error object is augmented with:
+ *     * `err.packageName` - Identifies the webreed plugin package that was being loaded.
+ *
+ * - with the code `WEBREED_PLUGIN_MISSING_SETUP_FUNCTION` when a plugin package does not
+ *   expose a setup function. Error object is augmented with:
+ *     * `err.packageName` - Identifies the webreed plugin package that was being loaded.
+ */
 export default function setup(projectRootPath: string, config: any = null): Environment {
   if (typeof projectRootPath !== "string") {
     throw new TypeError("argument 'projectRootPath' must be a string");
@@ -28,26 +45,34 @@ export default function setup(projectRootPath: string, config: any = null): Envi
   let env = new Environment();
   env.projectRootPath = projectRootPath;
 
-  setupFallbackResourceType(env);
-  setupDefaultPlugins(env);
+  applyBaseConfigToEnvironment(env);
+
+  if (config) {
+    applyConfigToEnvironment(env, config);
+  }
 
   return env;
 }
 
 
-function setupFallbackResourceType(env: Environment): void {
-  let fallbackResourceType = new ResourceType();
-  fallbackResourceType.mode = "binary";
-  env.resourceTypes.set("*", fallbackResourceType);
-}
-
-function setupDefaultPlugins(env: Environment): void {
-  env
-    .use(setupBinaryMode)
-    .use(setupTextMode)
-    .use(setupStandardGenerator)
-    .use(setupTemplateTransformer)
-    .use(setupJsonHandler)
-    .use(setupYamlHandler)
-    .use(setupNunjucksTemplateEngine);
+function applyBaseConfigToEnvironment(env: Environment): void {
+  applyConfigToEnvironment(env, {
+    "baseUrl": "/",
+    "defaultGeneratorName": "standard",
+    "defaultModeName": "text",
+    "resourceTypes": {
+      "*": {
+        "mode": "binary"
+      }
+    },
+    "plugins": [
+      { "package": "webreed-binary-mode" },
+      { "package": "webreed-text-mode" },
+      { "package": "webreed-standard-generator" },
+      { "package": "webreed-template-transformer" },
+      { "package": "webreed-json-handler" },
+      { "package": "webreed-yaml-handler" },
+      { "package": "webreed-nunjucks-template-engine" }
+    ]
+  });
 }

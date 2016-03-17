@@ -21,7 +21,7 @@ import {YamlHandler} from "webreed-yaml-handler/lib/YamlHandler";
 import setup from "../lib/setup";
 
 
-describe("#setup(projectRootPath, [options])", function () {
+describe("setup(projectRootPath, [options])", function () {
 
   beforeEach(function () {
     this.projectRootPath = path.join(__dirname, "fixtures/example-project");
@@ -58,15 +58,32 @@ describe("#setup(projectRootPath, [options])", function () {
       .should.throw("argument 'config' must be `null` or an object");
   });
 
+  it("throws error when 'config' is invalid", function () {
+    let invalidConfig = { "invalidProperty": 42 };
+    (() => setup(this.projectRootPath, invalidConfig))
+      .should.throw({ code: "WEBREED_INVALID_CONFIG" });
+  });
+
 
   it("returns a webreed environment", function () {
     this.env
       .should.be.instanceOf(Environment);
   });
 
+
   it("sets root path of project in environment", function () {
     this.env.projectRootPath
       .should.be.eql(this.projectRootPath);
+  });
+
+  it("sets default generator name in environment", function () {
+    this.env.defaultGeneratorName
+      .should.be.eql("standard");
+  });
+
+  it("sets default mode name in environment", function () {
+    this.env.defaultModeName
+      .should.be.eql("text");
   });
 
 
@@ -114,6 +131,20 @@ describe("#setup(projectRootPath, [options])", function () {
   it("includes the 'nunjucks' template engine by default", function () {
     this.env.templateEngines.get("nunjucks")
       .should.be.instanceOf(NunjucksTemplateEngine);
+  });
+
+
+  it("can override and inherit default configuration properties", function () {
+    let config = {
+      "defaultGeneratorName": "different-default-generator-name"
+    };
+
+    let newEnv = setup(this.projectRootPath, config);
+
+    newEnv.defaultGeneratorName
+      .should.be.eql("different-default-generator-name");
+    newEnv.defaultModeName
+      .should.be.eql("text");
   });
 
 });
