@@ -7,3 +7,10 @@ resourceTypes:
       transformer: custom-process-transformer
       options:
         customOption: 42
+  ".baz":
+    process:
+      - transformer: pre-process-transformer
+      - transformer: custom-process-transformer
+        options:
+          customOption: 42
+      - transformer: post-process-transformer

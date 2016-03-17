@@ -1,5 +1,5 @@
 resourceTypes:
   ".foo": 
     generator:
-      key: custom-generator
+      name: custom-generator
       invalidProperty: true

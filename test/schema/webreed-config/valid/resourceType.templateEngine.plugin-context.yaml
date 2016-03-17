@@ -1,9 +1,9 @@
 resourceTypes:
   ".foo":
     templateEngine:
-      key: custom-template-engine
+      name: custom-template-engine
   ".bar":
     templateEngine:
-      key: custom-template-engine
+      name: custom-template-engine
       options:
         customOption: 42

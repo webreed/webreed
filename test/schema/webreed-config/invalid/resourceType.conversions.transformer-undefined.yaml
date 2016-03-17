@@ -1,0 +1,6 @@
+resourceTypes:
+  ".foo": 
+    conversions:
+      ".bar":
+        options:
+          customOption: 42

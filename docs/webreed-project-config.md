@@ -74,11 +74,11 @@ The schema defines the following additional types:
 
 ## `pluginContext` (object)
 
-References a plugin by its key and can optionally specify options that apply in this context.
+References a plugin by its name and can optionally specify options that apply in this context.
 
 Properties of the `pluginContext` object:
 
-### `key` (pluginKey, required)
+### `name` (pluginName, required)
 
 Identifies the plugin.
 
@@ -86,9 +86,9 @@ Identifies the plugin.
 
 Options that apply for this context of the plugin.
 
-## `pluginKey` (string)
+## `pluginName` (string)
 
-Key that identifies a plugin.
+Name that identifies a plugin.
 
 ## `resourceType` (object)
 
@@ -134,21 +134,28 @@ Identifies the mode that will be used to read and write resources of this type.
 
 Default: `"text"`
 
-### `handler`
+### `handler` (pluginContext)
 
 Identifies the handler that is used to decode or encode data in the body of resources of this type. This is useful for data formats such as JSON and YAML.
 
-### `generator`
+### `generator` (pluginContext)
 
 Identifies the generator that is used to process resources of this type.
 
-Default: `"standard"`
+Default:
+
+```
+{
+  "key": "standard",
+  "options": {}
+}
+```
 
 ### `process`
 
 Identifies zero-or-more transformers which are in-turn applied to resources of this type.
 
-### `templateEngine`
+### `templateEngine` (pluginContext)
 
 Identifies the template engine that is used to render resources of this type. This is applicable when using the 'template' process transformation.
 
@@ -158,7 +165,7 @@ References a transformer plugin by its key and can optionally specify options th
 
 Properties of the `transformerPluginContext` object:
 
-### `transformer` (pluginKey, required)
+### `transformer` (pluginName, required)
 
 Identifies the transformer plugin.
 

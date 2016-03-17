@@ -4,7 +4,11 @@ resourceTypes:
     parseFrontmatter: true
     targetExtension: .html
     mode: text
-    handler: custom-handler
-    generator: custom-generator
-    process: custom-process-transformer
-    templateEngine: custom-template-engine
+    handler:
+      name: custom-handler
+    generator:
+      name: custom-generator
+    process:
+      transformer: custom-process-transformer
+    templateEngine:
+      name: custom-template-engine

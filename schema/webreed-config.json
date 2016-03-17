@@ -83,12 +83,12 @@
 
   "definitions": {
     "pluginContext": {
-      "description": "References a plugin by its key and can optionally specify options that apply in this context.",
+      "description": "References a plugin by its name and can optionally specify options that apply in this context.",
       "type": "object",
       "properties": {
-        "key": {
+        "name": {
           "description": "Identifies the plugin.",
-          "$ref": "#/definitions/pluginKey"
+          "$ref": "#/definitions/pluginName"
         },
         "options": {
           "description": "Options that apply for this context of the plugin.",
@@ -98,12 +98,12 @@
           ]
         }
       },
-      "required": [ "key" ],
+      "required": [ "name" ],
       "additionalProperties": false
     },
 
-    "pluginKey": {
-      "description": "Key that identifies a plugin.",
+    "pluginName": {
+      "description": "Name that identifies a plugin.",
       "type": "string",
       "minLength": 1
     },
@@ -155,32 +155,26 @@
         },
         "handler": {
           "description": "Identifies the handler that is used to decode or encode data in the body of resources of this type. This is useful for data formats such as JSON and YAML.",
-          "anyOf": [
-            { "$ref": "#/definitions/pluginContext" },
-            { "$ref": "#/definitions/pluginKey" }
-          ]
+          "$ref": "#/definitions/pluginContext"
         },
         "generator": {
           "description": "Identifies the generator that is used to process resources of this type.",
-          "anyOf": [
-            { "$ref": "#/definitions/pluginContext" },
-            { "$ref": "#/definitions/pluginKey" }
-          ],
-          "default": "standard"
+          "$ref": "#/definitions/pluginContext",
+          "default": {
+            "key": "standard",
+            "options": { }
+          }
         },
         "process": {
           "description": "Identifies zero-or-more transformers which are in-turn applied to resources of this type.",
           "anyOf": [
             { "$ref": "#/definitions/transformerPluginContext" },
-            { "$ref": "#/definitions/pluginKey" }
+            { "$ref": "#/definitions/transformerPluginContextMany" }
           ]
         },
         "templateEngine": {
           "description": "Identifies the template engine that is used to render resources of this type. This is applicable when using the 'template' process transformation.",
-          "anyOf": [
-            { "$ref": "#/definitions/pluginContext" },
-            { "$ref": "#/definitions/pluginKey" }
-          ]
+          "$ref": "#/definitions/pluginContext"
         }
       },
       "additionalProperties": false
@@ -192,7 +186,7 @@
       "properties": {
         "transformer": {
           "description": "Identifies the transformer plugin.",
-          "$ref": "#/definitions/pluginKey"
+          "$ref": "#/definitions/pluginName"
         },
         "options": {
           "description": "Options that are provided to plugin package setup function.",
@@ -209,12 +203,7 @@
     "transformerPluginContextMany": {
       "description": "References zero-or-more transformer plugins.",
       "type": "array",
-      "items": {
-        "anyOf": [
-          { "$ref": "#/definitions/transformerPluginContext" },
-          { "$ref": "#/definitions/pluginKey" }
-        ]
-      }
+      "items": { "$ref": "#/definitions/transformerPluginContext" }
     }
   }
 }

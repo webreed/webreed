@@ -1,9 +1,9 @@
 resourceTypes:
   ".foo":
     generator:
-      key: custom-generator
+      name: custom-generator
   ".bar":
     generator:
-      key: custom-generator
+      name: custom-generator
       options:
         customOption: 42

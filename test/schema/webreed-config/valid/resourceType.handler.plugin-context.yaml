@@ -1,9 +1,9 @@
 resourceTypes:
   ".foo":
     handler:
-      key: custom-handler
+      name: custom-handler
   ".bar":
     handler:
-      key: custom-handler
+      name: custom-handler
       options:
         customOption: 42

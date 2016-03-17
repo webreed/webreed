@@ -1,14 +1,14 @@
 resourceTypes:
   ".foo":
     handler:
-      key: custom-handler
+      name: custom-handler
       options: ~
     generator:
-      key: custom-generator
+      name: custom-generator
       options: ~
     process:
       transformer: custom-process-transformer
       options: ~
     templateEngine:
-      key: custom-template-engine
+      name: custom-template-engine
       options: ~
