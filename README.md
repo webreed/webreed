@@ -1,8 +1,8 @@
-# webreed
+# webreed [![Build Status](https://travis-ci.org/webreed/webreed.svg?branch=master)](https://travis-ci.org/webreed/webreed) [![Gitter](https://badges.gitter.im/webreed/webreed.svg)](https://gitter.im/webreed/webreed?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) 
 
 Webreed aims to be a simple yet flexible static website generator.
 
-[![Build Status](https://travis-ci.org/webreed/webreed.svg?branch=master)](https://travis-ci.org/webreed/webreed)
+[![npm version](https://badge.fury.io/js/webreed.svg)](https://badge.fury.io/js/webreed)
 [![Dependency Status](https://david-dm.org/webreed/webreed.svg)](https://david-dm.org/webreed/webreed)
 [![devDependency Status](https://david-dm.org/webreed/webreed/dev-status.svg)](https://david-dm.org/webreed/webreed#info=devDependencies)
 
