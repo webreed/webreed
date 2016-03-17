@@ -22,6 +22,7 @@
     "webreed-binary-mode": "^0.0.x",
     "webreed-core": "^0.0.x",
     "webreed-json-handler": "^0.0.x",
+    "webreed-markdown-transformer": "^0.0.x",
     "webreed-nunjucks-template-engine": "^0.0.x",
     "webreed-standard-generator": "^0.0.x",
     "webreed-template-transformer": "^0.0.x",

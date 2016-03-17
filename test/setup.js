@@ -14,6 +14,7 @@ import {BinaryMode} from "webreed-binary-mode/lib/BinaryMode";
 import {JsonHandler} from "webreed-json-handler/lib/JsonHandler";
 import {NunjucksTemplateEngine} from "webreed-nunjucks-template-engine/lib/NunjucksTemplateEngine";
 import {StandardGenerator} from "webreed-standard-generator/lib/StandardGenerator";
+import {MarkdownTransformer} from "webreed-markdown-transformer/lib/MarkdownTransformer";
 import {TemplateTransformer} from "webreed-template-transformer/lib/TemplateTransformer";
 import {TextMode} from "webreed-text-mode/lib/TextMode";
 import {YamlHandler} from "webreed-yaml-handler/lib/YamlHandler";

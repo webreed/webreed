@@ -69,6 +69,7 @@ function applyBaseConfigToEnvironment(env: Environment): void {
       { "package": "webreed-binary-mode" },
       { "package": "webreed-text-mode" },
       { "package": "webreed-standard-generator" },
+      { "package": "webreed-markdown-transformer" },
       { "package": "webreed-template-transformer" },
       { "package": "webreed-json-handler" },
       { "package": "webreed-yaml-handler" },
