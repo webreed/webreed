@@ -48,6 +48,16 @@ Customize output paths. Paths are resolved relative from the project's root path
 
 Map defining the resource types that are used in the project.
 
+Default:
+
+```
+{
+  "*": {
+    "mode": "binary"
+  }
+}
+```
+
 ## `plugins` (array)
 
 List of webreed plugin packages.
@@ -65,6 +75,34 @@ Name of the package that contains the plugin.
 ### `options`
 
 Options that are provided to plugin package setup function.
+
+Default:
+
+```
+[
+  {
+    "package": "webreed-binary-mode"
+  },
+  {
+    "package": "webreed-text-mode"
+  },
+  {
+    "package": "webreed-standard-generator"
+  },
+  {
+    "package": "webreed-template-transformer"
+  },
+  {
+    "package": "webreed-json-handler"
+  },
+  {
+    "package": "webreed-yaml-handler"
+  },
+  {
+    "package": "webreed-nunjucks-template-engine"
+  }
+]
+```
 
 ---
 
