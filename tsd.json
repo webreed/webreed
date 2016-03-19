@@ -7,6 +7,9 @@
   "installed": {
     "node/node.d.ts": {
       "commit": "3a86e056dc018541d82dd74639fca18ba8d605da"
+    },
+    "is-my-json-valid/is-my-json-valid.d.ts": {
+      "commit": "c4309e0e646ec024537c0806c6a31d199aa68df6"
     }
   }
 }
