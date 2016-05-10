@@ -197,6 +197,12 @@ Identifies zero-or-more transformers which are in-turn applied to resources of t
 
 Identifies the template engine that is used to render resources of this type. This is applicable when using the 'template' process transformation.
 
+### `template`
+
+Name of a template to apply by default to resources of this type.
+
+Default: `"none"`
+
 ## `transformerPluginContext` (object)
 
 References a transformer plugin by its key and can optionally specify options that apply in this context.
