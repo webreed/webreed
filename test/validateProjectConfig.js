@@ -5,26 +5,26 @@
 import given from "mocha-testdata";
 import should from "should";
 
-import {validateConfig} from "../lib/validateConfig";
+import {validateProjectConfig} from "../lib/validateProjectConfig";
 
 
-describe("validateConfig(config)", function () {
+describe("validateProjectConfig(config)", function () {
 
   it("is a function", function () {
-    validateConfig
+    validateProjectConfig
       .should.be.a.Function();
   });
 
 
   given( undefined, null, 42, "" ).
   it("throws error when argument 'config' is `null` or is not an object", function (invalidConfig) {
-    (() => validateConfig(invalidConfig))
+    (() => validateProjectConfig(invalidConfig))
       .should.throw("argument 'config' must be a non-null object");
   });
 
   it("throws error for invalid configuration", function () {
     let invalidConfig = { "invalidProperty": 42 };
-    (() => validateConfig(invalidConfig))
+    (() => validateProjectConfig(invalidConfig))
       .should.throw({ code: "WEBREED_INVALID_CONFIG" })
   });
 

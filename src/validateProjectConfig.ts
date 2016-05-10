@@ -5,8 +5,8 @@
 import createJsonSchemaValidator = require("is-my-json-valid");
 
 
-const webreedConfigSchemaValidator = createJsonSchemaValidator(
-    require("../schema/webreed-config"),
+const projectConfigSchemaValidator = createJsonSchemaValidator(
+    require("../schema/webreed-project"),
     { verbose: true }
   );
 
@@ -22,15 +22,15 @@ const webreedConfigSchemaValidator = createJsonSchemaValidator(
  *   project configuration. Error object is augmented with:
  *     * `err.issues` - Lists the validation error(s).
  */
-export function validateConfig(config: any): void {
+export function validateProjectConfig(config: any): void {
   if (typeof config !== "object" || config === null) {
     throw new TypeError("argument 'config' must be a non-null object");
   }
 
-  if (!webreedConfigSchemaValidator(config)) {
+  if (!projectConfigSchemaValidator(config)) {
     let err = new Error("Webreed configuration is invalid.");
     err["code"] = "WEBREED_INVALID_CONFIG";
-    err["issues"] = webreedConfigSchemaValidator.errors;
+    err["issues"] = projectConfigSchemaValidator.errors;
     throw err;
   }
 }

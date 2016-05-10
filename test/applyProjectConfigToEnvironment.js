@@ -9,10 +9,10 @@ import should from "should";
 
 import {Environment} from "webreed-core/lib/Environment";
 
-import {applyConfigToEnvironment} from "../lib/applyConfigToEnvironment";
+import {applyProjectConfigToEnvironment} from "../lib/applyProjectConfigToEnvironment";
 
 
-describe("applyConfigToEnvironment(env, config)", function () {
+describe("applyProjectConfigToEnvironment(env, config)", function () {
 
   beforeEach(function () {
     this.env = new Environment();
@@ -20,32 +20,32 @@ describe("applyConfigToEnvironment(env, config)", function () {
 
 
   it("is a function", function () {
-    applyConfigToEnvironment
+    applyProjectConfigToEnvironment
       .should.be.a.Function();
   });
 
 
   given( undefined, null, 42, "" ).
   it("throws error when argument 'env' is not a webreed environment", function (env) {
-    (() => applyConfigToEnvironment(env, null))
+    (() => applyProjectConfigToEnvironment(env, null))
       .should.throw("argument 'env' must be a webreed environment");
   });
 
   given( undefined, null, 42, "" ).
   it("throws error when argument 'config' is `null` or is not an object", function (invalidConfig) {
-    (() => applyConfigToEnvironment(this.env, invalidConfig))
+    (() => applyProjectConfigToEnvironment(this.env, invalidConfig))
       .should.throw("argument 'config' must be a non-null object");
   });
 
   it("throws error when argument 'config' is not a valid webreed configuration", function () {
     let invalidConfig = { "invalidProperty": 42 };
-    (() => applyConfigToEnvironment(this.env, invalidConfig))
+    (() => applyProjectConfigToEnvironment(this.env, invalidConfig))
       .should.throw({ code: "WEBREED_INVALID_CONFIG" })
   });
 
   it("throws error for invalid configuration", function () {
     let invalidConfig = { "invalidProperty": 42 };
-    (() => applyConfigToEnvironment(this.env, invalidConfig))
+    (() => applyProjectConfigToEnvironment(this.env, invalidConfig))
       .should.throw({ code: "WEBREED_INVALID_CONFIG" })
   });
 
@@ -71,7 +71,7 @@ describe("applyConfigToEnvironment(env, config)", function () {
       }
     };
 
-    applyConfigToEnvironment(this.env, config);
+    applyProjectConfigToEnvironment(this.env, config);
 
     this.env.baseUrl
       .should.be.eql("http://example.com");
@@ -102,7 +102,7 @@ describe("applyConfigToEnvironment(env, config)", function () {
       ]
     };
 
-    applyConfigToEnvironment(this.env, config);
+    applyProjectConfigToEnvironment(this.env, config);
 
     this.env.baseUrl
       .should.be.eql("http://example.com/loaded-fake-plugin");
@@ -115,7 +115,7 @@ describe("applyConfigToEnvironment(env, config)", function () {
       ]
     };
 
-    (() => applyConfigToEnvironment(this.env, config))
+    (() => applyProjectConfigToEnvironment(this.env, config))
       .should.throw({
         code: "WEBREED_PLUGIN_NOT_FOUND",
         packageName: "a-package-that-does-not-exist"
@@ -131,7 +131,7 @@ describe("applyConfigToEnvironment(env, config)", function () {
       ]
     };
 
-    (() => applyConfigToEnvironment(this.env, config))
+    (() => applyProjectConfigToEnvironment(this.env, config))
       .should.throw({
         code: "WEBREED_PLUGIN_MISSING_SETUP_FUNCTION",
         packageName: "fake-plugin-without-setup"

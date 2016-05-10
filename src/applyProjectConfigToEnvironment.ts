@@ -6,7 +6,7 @@ import {Environment} from "webreed-core/lib/Environment";
 import {PluginContext} from "webreed-core/lib/PluginContext";
 import {ResourceType} from "webreed-core/lib/ResourceType";
 
-import {validateConfig} from "./validateConfig";
+import {validateProjectConfig} from "./validateProjectConfig";
 
 
 /**
@@ -30,12 +30,12 @@ import {validateConfig} from "./validateConfig";
  *   expose a setup function. Error object is augmented with:
  *     * `err.packageName` - Identifies the webreed plugin package that was being loaded.
  */
-export function applyConfigToEnvironment(env: Environment, config: any): void {
+export function applyProjectConfigToEnvironment(env: Environment, config: any): void {
   if (!(env instanceof Environment)) {
     throw new TypeError("argument 'env' must be a webreed environment");
   }
 
-  validateConfig(config);
+  validateProjectConfig(config);
 
   if (config.baseUrl) {
     env.baseUrl = config.baseUrl;

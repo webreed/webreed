@@ -11,11 +11,11 @@ import should from "should";
 import yaml from "js-yaml";
 
 
-const schema = require("../../../schema/webreed-config");
+const schema = require("../../../schema/webreed-project");
 const validateWebreedConfig = isMyJsonValid(schema);
 
 
-describe("Schema: webreed-config", function () {
+describe("Schema: webreed-project", function () {
 
   for (let testCase of getTestCases("valid")) {
     it(`passes for valid webreed project configuration <${testCase.name}>`, function () {

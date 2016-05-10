@@ -4,7 +4,7 @@
 
 import {Environment} from "webreed-core/lib/Environment";
 
-import {applyConfigToEnvironment} from "./applyConfigToEnvironment";
+import {applyProjectConfigToEnvironment} from "./applyProjectConfigToEnvironment";
 
 
 /**
@@ -48,7 +48,7 @@ export default function setup(projectRootPath: string, config: any = null): Envi
   applyBaseConfigToEnvironment(env);
 
   if (config) {
-    applyConfigToEnvironment(env, config);
+    applyProjectConfigToEnvironment(env, config);
   }
 
   return env;
@@ -56,7 +56,7 @@ export default function setup(projectRootPath: string, config: any = null): Envi
 
 
 function applyBaseConfigToEnvironment(env: Environment): void {
-  applyConfigToEnvironment(env, {
+  applyProjectConfigToEnvironment(env, {
     "baseUrl": "/",
     "defaultGeneratorName": "standard",
     "defaultModeName": "text",
