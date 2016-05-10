@@ -69,44 +69,46 @@ export function applyProjectConfigToEnvironment(env: Environment, config: any): 
 
   if (config.resourceTypes) {
     for (let key of Object.keys(config.resourceTypes)) {
+      let resourceTypeConfig = config.resourceTypes[key] || {};
+
       let resourceType = new ResourceType();
 
-      if (config.resourceTypes[key].conversions) {
-        for (let targetKey of Object.keys(config.resourceTypes[key].conversions)) {
+      if (resourceTypeConfig.conversions) {
+        for (let targetKey of Object.keys(resourceTypeConfig.conversions)) {
           resourceType.conversions[targetKey] = pluginContextFromConfigMany(
               "transformer",
-              config.resourceTypes[key].conversions[targetKey]
+              resourceTypeConfig.conversions[targetKey]
             );
         }
       }
 
-      if (config.resourceTypes[key].custom) {
-        Object.assign(resourceType.custom, config.resourceTypes[key].custom);
+      if (resourceTypeConfig.custom) {
+        Object.assign(resourceType.custom, resourceTypeConfig.custom);
       }
 
-      if (config.resourceTypes[key].encoding) {
-        resourceType.encoding = config.resourceTypes[key].encoding;
+      if (resourceTypeConfig.encoding) {
+        resourceType.encoding = resourceTypeConfig.encoding;
       }
-      if (config.resourceTypes[key].parseFrontmatter) {
-        resourceType.parseFrontmatter = config.resourceTypes[key].parseFrontmatter;
+      if (resourceTypeConfig.parseFrontmatter) {
+        resourceType.parseFrontmatter = resourceTypeConfig.parseFrontmatter;
       }
-      if (config.resourceTypes[key].targetExtension) {
-        resourceType.targetExtension = config.resourceTypes[key].targetExtension;
+      if (resourceTypeConfig.targetExtension) {
+        resourceType.targetExtension = resourceTypeConfig.targetExtension;
       }
-      if (config.resourceTypes[key].mode) {
-        resourceType.mode = config.resourceTypes[key].mode;
+      if (resourceTypeConfig.mode) {
+        resourceType.mode = resourceTypeConfig.mode;
       }
-      if (config.resourceTypes[key].handler) {
-        resourceType.handler = pluginContextFromConfig("name", config.resourceTypes[key].handler);
+      if (resourceTypeConfig.handler) {
+        resourceType.handler = pluginContextFromConfig("name", resourceTypeConfig.handler);
       }
-      if (config.resourceTypes[key].generator) {
-        resourceType.generator = pluginContextFromConfig("name", config.resourceTypes[key].generator);
+      if (resourceTypeConfig.generator) {
+        resourceType.generator = pluginContextFromConfig("name", resourceTypeConfig.generator);
       }
-      if (config.resourceTypes[key].process) {
-        resourceType.process = pluginContextFromConfigMany("transformer", config.resourceTypes[key].process);
+      if (resourceTypeConfig.process) {
+        resourceType.process = pluginContextFromConfigMany("transformer", resourceTypeConfig.process);
       }
-      if (config.resourceTypes[key].templateEngine) {
-        resourceType.templateEngine = pluginContextFromConfig("name", config.resourceTypes[key].templateEngine);
+      if (resourceTypeConfig.templateEngine) {
+        resourceType.templateEngine = pluginContextFromConfig("name", resourceTypeConfig.templateEngine);
       }
 
       env.resourceTypes.set(key, resourceType);

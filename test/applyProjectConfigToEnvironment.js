@@ -67,7 +67,8 @@ describe("applyProjectConfigToEnvironment(env, config)", function () {
         },
         ".md": {
           "process": { "transformer": "markdown-transformer" }
-        }
+        },
+        ".html": null
       }
     };
 
@@ -91,6 +92,8 @@ describe("applyProjectConfigToEnvironment(env, config)", function () {
       .should.be.eql("fallback-resource-generator");
     this.env.resourceTypes.get(".md").process[0].name
       .should.be.eql("markdown-transformer");
+    this.env.resourceTypes.get(".html").mode
+      .should.be.eql("text");
   });
 
   it("loads plugins", function () {
