@@ -1,6 +1,6 @@
 {
   "name": "webreed",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "A simple yet flexible static website generator.",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
     "build": "npm run clean && gulp build",
     "clean": "rm -rf lib",
     "test": "mocha ./test/ --recursive --compilers js:babel-register",
-    "generate-schema-docs": "node ./scripts/generate-schema-docs schema/webreed-config.json > docs/webreed-project-config.md"
+    "generate-schema-docs": "node ./scripts/generate-schema-docs schema/webreed-project.json > docs/webreed-project-config.md"
   },
   "author": "Rotorz Limited",
   "license": "MIT",
