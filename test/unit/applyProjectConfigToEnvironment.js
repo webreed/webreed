@@ -9,7 +9,7 @@ import should from "should";
 
 import {Environment} from "webreed-core/lib/Environment";
 
-import {applyProjectConfigToEnvironment} from "../lib/applyProjectConfigToEnvironment";
+import {applyProjectConfigToEnvironment} from "../../lib/applyProjectConfigToEnvironment";
 
 
 describe("applyProjectConfigToEnvironment(env, config)", function () {
@@ -97,7 +97,7 @@ describe("applyProjectConfigToEnvironment(env, config)", function () {
   });
 
   it("loads plugins", function () {
-    this.env.setPath("plugins", path.join(__dirname, "fakes/plugins"));
+    this.env.setPath("plugins", path.resolve(__dirname, "../fakes/plugins"));
 
     let config = {
       "plugins": [
@@ -126,7 +126,7 @@ describe("applyProjectConfigToEnvironment(env, config)", function () {
   });
 
   it("throws error when plugin modules is missing a setup function", function () {
-    this.env.setPath("plugins", path.join(__dirname, "fakes/plugins"));
+    this.env.setPath("plugins", path.resolve(__dirname, "../fakes/plugins"));
 
     let config = {
       "plugins": [

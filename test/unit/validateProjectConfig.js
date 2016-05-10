@@ -5,7 +5,7 @@
 import given from "mocha-testdata";
 import should from "should";
 
-import {validateProjectConfig} from "../lib/validateProjectConfig";
+import {validateProjectConfig} from "../../lib/validateProjectConfig";
 
 
 describe("validateProjectConfig(config)", function () {

@@ -19,13 +19,13 @@ import {TemplateTransformer} from "webreed-template-transformer/lib/TemplateTran
 import {TextMode} from "webreed-text-mode/lib/TextMode";
 import {YamlHandler} from "webreed-yaml-handler/lib/YamlHandler";
 
-import setup from "../lib/setup";
+import setup from "../../lib/setup";
 
 
 describe("setup(projectRootPath, [options])", function () {
 
   beforeEach(function () {
-    this.projectRootPath = path.join(__dirname, "fixtures/example-project");
+    this.projectRootPath = path.resolve(__dirname, "../fixtures/example-project");
     this.env = setup(this.projectRootPath);
   });
 

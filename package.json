@@ -12,7 +12,7 @@
     "prepublish": "npm run build",
     "build": "npm run clean && gulp build",
     "clean": "rm -rf lib",
-    "test": "mocha ./test/ --recursive --compilers js:babel-register",
+    "test": "mocha ./test/unit/ --recursive --compilers js:babel-register",
     "generate-schema-docs": "node ./scripts/generate-schema-docs schema/webreed-project.json > docs/webreed-project-config.md"
   },
   "author": "Rotorz Limited",
