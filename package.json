@@ -1,6 +1,6 @@
 {
   "name": "webreed",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A simple yet flexible static website generator.",
   "repository": {
     "type": "git",
