@@ -12,4 +12,3 @@ resourceTypes:
       transformer: custom-process-transformer
     templateEngine:
       name: custom-template-engine
-    template: default.nunjucks

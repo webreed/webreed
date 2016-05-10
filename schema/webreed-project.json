@@ -189,10 +189,6 @@
         "templateEngine": {
           "description": "Identifies the template engine that is used to render resources of this type. This is applicable when using the 'template' process transformation.",
           "$ref": "#/definitions/pluginContext"
-        },
-        "template": {
-          "description": "Name of a template to apply by default to resources of this type.",
-          "default": "none"
         }
       },
       "additionalProperties": false
