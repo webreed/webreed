@@ -155,7 +155,7 @@ function requirePlugin(env: Environment, packageName: string): any {
       }
     }
     catch (err) {
-      if (err.code !== "MODULE_NOT_FOUND") {
+      if (err.code !== "MODULE_NOT_FOUND" || !err.message || err.message.indexOf(packageName) === -1) {
         throw err;
       }
     }

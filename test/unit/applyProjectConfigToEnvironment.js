@@ -125,6 +125,35 @@ describe("applyProjectConfigToEnvironment(env, config)", function () {
       })
   });
 
+  it("throws error when plugin package is missing a dependency", function () {
+    this.env.setPath("plugins", path.resolve(__dirname, "../fakes/plugins"));
+
+    let config = {
+      "plugins": [
+        { "package": "fake-plugin-with-missing-dependency" }
+      ]
+    };
+
+    (() => applyProjectConfigToEnvironment(this.env, config))
+      .should.throw({
+        code: "MODULE_NOT_FOUND",
+        message: "Cannot find module 'a-dependency-that-does-not-exist'"
+      })
+  });
+
+  it("throws error when plugin package throws error", function () {
+    this.env.setPath("plugins", path.resolve(__dirname, "../fakes/plugins"));
+
+    let config = {
+      "plugins": [
+        { "package": "fake-plugin-with-error" }
+      ]
+    };
+
+    (() => applyProjectConfigToEnvironment(this.env, config))
+      .should.throw("bang!")
+  });
+
   it("throws error when plugin modules is missing a setup function", function () {
     this.env.setPath("plugins", path.resolve(__dirname, "../fakes/plugins"));
 
