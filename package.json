@@ -12,7 +12,7 @@
     "prepublish": "npm run build",
     "build": "npm run clean && tsc --pretty",
     "clean": "rm -rf lib",
-    "test": "mocha ./test/unit/ --recursive",
+    "test": "mocha ./test/spec/ --recursive",
     "generate-schema-docs": "node ./scripts/generate-schema-docs schema/webreed-project.json > docs/webreed-project-config.md"
   },
   "author": "Rotorz Limited",
