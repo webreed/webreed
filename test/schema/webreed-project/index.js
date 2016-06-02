@@ -1,14 +1,16 @@
 // Copyright (c) Rotorz Limited. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root.
 
+"use strict";
 
-import fs from "fs";
-import path from "path";
 
-import given from "mocha-testdata";
-import isMyJsonValid from "is-my-json-valid";
-import should from "should";
-import yaml from "js-yaml";
+const fs = require("fs");
+const path = require("path");
+
+const given = require("mocha-testdata");
+const isMyJsonValid = require("is-my-json-valid");
+const should = require("should");
+const yaml = require("js-yaml");
 
 
 const schema = require("../../../schema/webreed-project");

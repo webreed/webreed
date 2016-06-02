@@ -1,15 +1,17 @@
 // Copyright (c) Rotorz Limited. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root.
 
+"use strict";
 
-import path from "path";
 
-import given from "mocha-testdata";
-import should from "should";
+const path = require("path");
 
-import {Environment} from "webreed-core/lib/Environment";
+const given = require("mocha-testdata");
+const should = require("should");
 
-import {applyProjectConfigToEnvironment} from "../../lib/applyProjectConfigToEnvironment";
+const Environment = require("webreed-core/lib/Environment").Environment;
+
+const applyProjectConfigToEnvironment = require("../../lib/applyProjectConfigToEnvironment").applyProjectConfigToEnvironment;
 
 
 describe("applyProjectConfigToEnvironment(env, config)", function () {

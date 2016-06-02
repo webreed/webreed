@@ -1,25 +1,27 @@
 // Copyright (c) Rotorz Limited. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root.
 
+"use strict";
 
-import path from "path";
 
-import given from "mocha-testdata";
-import should from "should";
+const path = require("path");
 
-import {Environment} from "webreed-core/lib/Environment";
-import {ResourceType} from "webreed-core/lib/ResourceType";
+const given = require("mocha-testdata");
+const should = require("should");
 
-import {BinaryMode} from "webreed-binary-mode/lib/BinaryMode";
-import {JsonHandler} from "webreed-json-handler/lib/JsonHandler";
-import {NunjucksTemplateEngine} from "webreed-nunjucks-template-engine/lib/NunjucksTemplateEngine";
-import {StandardGenerator} from "webreed-standard-generator/lib/StandardGenerator";
-import {MarkdownTransformer} from "webreed-markdown-transformer/lib/MarkdownTransformer";
-import {TemplateTransformer} from "webreed-template-transformer/lib/TemplateTransformer";
-import {TextMode} from "webreed-text-mode/lib/TextMode";
-import {YamlHandler} from "webreed-yaml-handler/lib/YamlHandler";
+const Environment = require("webreed-core/lib/Environment").Environment;
+const ResourceType = require("webreed-core/lib/ResourceType").ResourceType;
 
-import setup from "../../lib/setup";
+const BinaryMode = require("webreed-binary-mode/lib/BinaryMode").BinaryMode;
+const JsonHandler = require("webreed-json-handler/lib/JsonHandler").JsonHandler;
+const NunjucksTemplateEngine = require("webreed-nunjucks-template-engine/lib/NunjucksTemplateEngine").NunjucksTemplateEngine;
+const StandardGenerator = require("webreed-standard-generator/lib/StandardGenerator").StandardGenerator;
+const MarkdownTransformer = require("webreed-markdown-transformer/lib/MarkdownTransformer").MarkdownTransformer;
+const TemplateTransformer = require("webreed-template-transformer/lib/TemplateTransformer").TemplateTransformer;
+const TextMode = require("webreed-text-mode/lib/TextMode").TextMode;
+const YamlHandler = require("webreed-yaml-handler/lib/YamlHandler").YamlHandler;
+
+const setup = require("../../lib/setup").default;
 
 
 describe("setup(projectRootPath, [options])", function () {
