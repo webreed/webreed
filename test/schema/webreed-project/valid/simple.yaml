@@ -10,3 +10,4 @@ hiddenUrlFileNames:
 paths:
   output: output2
   plugins: plugins2
+  data: abc/def
