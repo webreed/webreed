@@ -1,11 +1,14 @@
 {
   "name": "webreed",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A simple yet flexible static website generator.",
   "repository": {
     "type": "git",
     "url": "https://github.com/webreed/webreed"
   },
+  "keywords": [
+    "webreed"
+  ],
   "main": "lib/setup.js",
   "typings": "lib/setup.d.ts",
   "scripts": {
