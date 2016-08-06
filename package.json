@@ -35,7 +35,7 @@
     "webreed-yaml-handler": "^0.0.x"
   },
   "devDependencies": {
-    "json-schema-to-markdown": "git+https://github.com/kruncher/json-schema-to-markdown.git",
+    "json-schema-to-markdown": "^1.0.2",
     "merge2": "^1.0.1",
     "mocha": "^2.3.4",
     "mocha-testdata": "^1.1.2",
